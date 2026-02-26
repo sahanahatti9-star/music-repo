@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My Music Streaming</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Top Bar -->
+<header class="top-bar">
+  <h2>🎵 Melodies</h2>
+
+  <input type="text" id="search" placeholder="Search songs..." onkeyup="searchSongs()">
+
+  <div class="profile-menu">
+    ⋮
+    <div class="dropdown">
+      <button onclick="toggleTheme()">Theme</button>
+      <button onclick="logout()">Logout</button>
+    </div>
+  </div>
+</header>
+
+<!-- Main Content -->
+<main class="main-content">
+
+  <!-- PLAYLIST GRID VIEW -->
+  <div id="gridView">
+
+    <section class="playlist-section">
+      <h3>🔥 Popular Playlists</h3>
+      <div class="playlist-grid" id="popularGrid"></div>
+    </section>
+
+    <section class="playlist-section">
+      <h3>🎸 Rock Playlists</h3>
+      <div class="playlist-grid" id="rockGrid"></div>
+    </section>
+
+    <section class="playlist-section">
+      <h3>🎷 Kannada hits</h3>
+      <div class="playlist-grid" id="jazzGrid"></div>
+    </section>
+
+    <section class="playlist-section">
+      <h3>💃 Dance Playlists</h3>
+      <div class="playlist-grid" id="danceGrid"></div>
+    </section>
+
+  </div>
+
+  <!-- INNER SONG LIST VIEW -->
+  <div id="playlistView" class="hidden">
+    <button class="back-btn" onclick="closePlaylist()">⬅ Back</button>
+    <h2 id="playlistTitle"></h2>
+    <div id="songList"></div>
+  </div>
+
+  <!-- Upload -->
+  <section class="upload">
+    <input type="file" accept="audio/*" onchange="uploadSong(event)">
+  </section>
+
+</main>
+
+
+  <!-- Upload -->
+  <section class="upload">
+    <input type="file" accept="audio/*" onchange="uploadSong(event)">
+  </section>
+
+</main>
+
+<!-- Floating Mini Player -->
+<div class="mini-player">
+  <p id="nowPlaying">No song playing</p>
+
+  <!-- EQ Controls -->
+  <div class="eq-controls">
+    <button onclick="toggleEQ()">EQ ON / OFF</button>
+
+    <select onchange="setPreset(this.value)">
+      <option value="flat">Flat</option>
+      <option value="pop">Pop</option>
+      <option value="classic">Classic</option>
+      <option value="dance">Dance</option>
+      <option value="blues">Blues</option>
+      <option value="jazz">Jazz</option>
+      <option value="slow">Slow</option>
+      <option value="electro">Electro</option>
+      <option value="rock">Rock</option>
+      <option value="country">Country</option>
+    </select>
+  </div>
+
+  <!-- Equalizer -->
+  <canvas id="equalizer"></canvas>
+
+  <!-- Progress / Flow Bar -->
+  <div class="progress-container">
+    <span id="currentTime">0:00</span>
+    <input type="range" id="progressBar" value="0" min="0" max="100">
+    <span id="duration">0:00</span>
+  </div>
+
+  <!-- Audio Player -->
+  <audio id="audio"></audio>
+
+  <!-- Controls -->
+  <div class="controls">
+    <button onclick="prevSong()">⏮</button>
+    <button onclick="playPause()">▶ / ⏸</button>
+    <button onclick="nextSong()">⏭</button>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
